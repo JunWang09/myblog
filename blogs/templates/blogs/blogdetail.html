@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load extras %}
+
+{% block sidecontent %}
+<div class="col-md-12">
+{% block content %}
+
+{% if blog.image %}
+    <img class="card-img-top" src="{{ blog.image.url }}"></img>
+    <hr>
+{% endif%}
+<h1 class="text-center pt-3">{{ blog.title }}</h1>
+
+<p>
+    <i class="far fa-clock"></i> {{blog.publish_date}} &nbsp;
+    <i class="far fa-user"></i> {{blog.owner}} &nbsp;
+</p>
+<hr>
+
+{{ blog.body|markdown|safe }}
+<hr>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [['$','$']],
+      displayMath: [['$$','$$']] ,
+      processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+<script type="text/javascript"
+   src="//cdn.mathjax.org/mathjax/latest/MathJax.js">
+</script>
+
+{% endblock %}
+</div>
+{% endblock %}

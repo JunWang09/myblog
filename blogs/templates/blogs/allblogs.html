@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load extras %}
+
+{% block sidecontent %}
+
+<div class="col-md-8 pt-5">
+{% block content %}
+
+{% for blog in blogs.all %}
+<div class="card mb-8 shadow-sm">
+  {% if blog.image %}
+      <a href="{% url 'blogdetail' blog.id %}">
+        <img src="{{ blog.image.url }}" class="card-img-top"></img>
+      </a>
+  {% endif %}
+
+  <div class="card-body">
+    <h2 class="card-title">
+      <a href="{% url 'blogdetail' blog.id %}">{{ blog.title }}</a>
+    </h2>
+    <p class="card-text">
+      {{ blog.summary|markdown|safe }}
+    </p>
+    <a href="{% url 'blogdetail' blog.id %}" class="btn btn-primary">Read More &rarr;</a>
+
+  </div>
+  <div class="card-footer text-muted">
+      Posted on {{ blog.publish_date }}
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}
+</div>
+
+<div class="col-md-4 pt-5">
+  <div class="row">
+{% include 'blogs/components/sidebar.html' %}
+</div>
+</div>
+{% endblock %}

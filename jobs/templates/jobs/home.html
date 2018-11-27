@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block maincontent %}
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Hey, I'm Jun</h1>
+    <p class="lead text-muted">My name is Jun Wang, I am a data scientist and I love statistical models, machine learning and deep learning. Using python, I have successfully built fraud detection algorithm, anomaly detection algorithm and web personalization systems.</p>
+    <p>
+      <a href="mailto: junwang09@gmail.com" class="btn btn-primary my-2">Email Me</a>
+    </p>
+  </div>
+</section>
+{% endblock %}
+
+<div class="album py-5 bg-light">
+{% block content %}
+<div class="row">
+{% for job in jobs.all %}
+<div class="col-md-4">
+  <div class="card mb-4 shadow-sm">
+    <h3><p class="card-text">{{ job.title }}</p></h3>
+    <img class="card-img-top" src="{{ job.image.url }}" height="300" weight="300"></img>
+    <div class="card-body">
+      <p class="card-text">{{ job.summary }}</p>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}
+</div>
