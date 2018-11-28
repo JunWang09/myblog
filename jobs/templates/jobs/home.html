@@ -19,8 +19,10 @@
 {% for job in jobs.all %}
 <div class="col-md-4">
   <div class="card mb-4 shadow-sm">
-    <h3><p class="card-text">{{ job.title }}</p></h3>
-    <img class="card-img-top" src="{{ job.image.url }}" height="300" weight="300"></img>
+    <h3 href="{% url 'jobdetail' job.id %}"><p class="card-text">{{ job.title }}</p></h3>
+    <a href="{% url 'jobdetail' job.id %}">
+      <img class="card-img-top" src="{{ job.image.url }}" height="300" width="300"></img>
+    </a>
     <div class="card-body">
       <p class="card-text">{{ job.summary }}</p>
     </div>

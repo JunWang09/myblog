@@ -5,19 +5,14 @@
 <div class="col-md-12 pt-5">
 {% block content %}
 
-{% if blog.image %}
-    <img class="card-img-top" src="{{ blog.image.url }}"></img>
+<h1 class="text-center pt-3">{{ job.title }}</h1>
+
+{% if job.image %}
+    <img class="card-img-top" src="{{ job.image.url }}" height="300" width="300"></img>
     <hr>
 {% endif%}
-<h1 class="text-center pt-3">{{ blog.title }}</h1>
 
-<p>
-    <i class="far fa-clock"></i> {{blog.publish_date}} &nbsp;
-    <i class="far fa-user"></i> {{blog.owner}} &nbsp;
-</p>
-<hr>
-
-{{ blog.body|markdown|safe }}
+{{ job.body|markdown|safe }}
 <hr>
 
 <script type="text/x-mathjax-config">
